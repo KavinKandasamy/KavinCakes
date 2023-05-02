@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServerApp.Data;
@@ -24,6 +25,7 @@ namespace ServerApp.Controllers
             return Ok("Ok");
         }
 
+        [AllowAnonymous]
         [HttpPost("CreateUser")]
         public IActionResult Create(User user)
         {
@@ -37,13 +39,23 @@ namespace ServerApp.Controllers
             return Ok("User Registered Successfully");
         }
 
+        [AllowAnonymous]
         [HttpPost("LoginUser")]
         public IActionResult Login(Login user)
         {
             var userAvailable = _context.Users.Where(u => u.Email == user.Email && u.Pwd == user.Pwd).FirstOrDefault(); 
             if(userAvailable != null)
             {
-                return Ok("Login Successfully");
+                return Ok(
+                    new JwtService(_configuration).GenerateToken(
+                        userAvailable.UserID.ToString(),
+                        userAvailable.FirstName,
+                        userAvailable.LastName,
+                        userAvailable.Email,
+                        userAvailable.Mobile,
+                        userAvailable.Gender
+                        )
+                    );
             }
             return Ok("Login Failed");
         }

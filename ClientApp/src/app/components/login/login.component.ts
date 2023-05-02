@@ -31,10 +31,12 @@ export class LoginComponent implements OnInit {
     }
     else{
       this.isUserValid =true;
-      alert("Login Successfully")
+      this.loginAuth.setToken(res);
     }
    })
   }
+
+  
 
   get Email():FormControl{
     return this.loginForm.get('email') as FormControl;
