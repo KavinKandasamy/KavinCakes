@@ -37,9 +37,15 @@ namespace ServerApp.Controllers
             return Ok("User Registered Successfully");
         }
 
-        /*[HttpPost("LoginUser")]
-        public IActionResult Login(Login user) { 
-            var userAvsilab
-        }*/
+        [HttpPost("LoginUser")]
+        public IActionResult Login(Login user)
+        {
+            var userAvailable = _context.Users.Where(u => u.Email == user.Email && u.Pwd == user.Pwd).FirstOrDefault(); 
+            if(userAvailable != null)
+            {
+                return Ok("Login Successfully");
+            }
+            return Ok("Login Failed");
+        }
     }
 }

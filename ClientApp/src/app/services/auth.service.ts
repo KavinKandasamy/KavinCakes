@@ -19,4 +19,17 @@ export class AuthService {
       Pwd       : user[5]
     },{responseType:'text'});
   }
+
+  loginUser(loginInfo:Array<string>){
+    return this.http.post(
+      this.baseServerUrl+ "User/LoginUser",
+      {
+        Email :loginInfo[0],
+        Pwd   :loginInfo[1],
+      },
+      {
+        responseType:'text'
+      }
+    )
+  }
 }

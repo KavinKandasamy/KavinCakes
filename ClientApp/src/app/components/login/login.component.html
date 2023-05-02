@@ -1,0 +1,101 @@
+<!-- <p class="text-center fa-3" [ngClass]="isAccountCreated? 'text-success pb-1':'text-danger pb-1'">{{displayMsg}}</p> -->
+
+<!-- <form [formGroup]="loginForm" class="border p-3 rounded-3" (ngSubmit)="loginSubmited()">
+  <div class="row g-0">
+   <div class="col text-center p-2 mb-3 bg-light">
+    <span>Register</span>
+   </div>
+   </div>
+    <div class="row">
+      <div class="col mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" formControlName="email">
+        <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">Email is Required</div>
+        <div class="form-text text-danger" *ngIf="Email.errors?.['email'] &&(Email.touched || Email.dirty)">Email is Invalid</div>
+      </div>
+      </div>
+
+        <div class="row">
+          <div class="col mb-3">
+            <label for="pwd" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pwd" formControlName="pwd">
+            <div class="form-text text-danger" *ngIf="Pwd.errors?.['required'] && (Pwd.touched || Pwd.dirty)">Password is Required</div>
+            <div class="form-text text-danger" *ngIf="Pwd.errors?.['minlength'] || Pwd.errors?.['maxlength']&& (Pwd.touched || Pwd.dirty)">Password should be at least 6 and max 15 characters long</div>
+          </div>
+          <div class="row">
+            <div class="col-6 offset-3">
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary"  [disabled]="loginForm.invalid">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+          </div>
+</form> -->
+
+
+<!-- Section: Design Block -->
+<section class=" text-center text-lg-start">
+
+  <div class="card mb-3" >
+    <div class="row g-0 d-flex align-items-center">
+      <div class="row g-0 " style="background-color: rgb(240, 0, 0);">
+      <div class="col col-lg-3 " >
+        <img src="../../../assets/images/logo.webp" alt="logo" style="height: 100px;width: 100px;"
+          class=" rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-4" />
+      </div>
+      <div class=" col-lg-4">
+        <p class="text-start h1 fw-bold pt-4 " style="color: white;">Login</p>
+      </div>
+    </div>
+      <div class="row-lg-4">
+        <div class="card-body  " style="padding-left:80px ;">
+
+          <form  [formGroup]="loginForm"  (ngSubmit)="loginSubmited()">
+            <!-- Email input -->
+            <div class="row">
+              <div  class=" col col-lg-10 mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" formControlName="email">
+                <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">Email is Required</div>
+                <div class="form-text text-danger" *ngIf="Email.errors?.['email'] &&(Email.touched || Email.dirty)">Email is Invalid</div>
+              </div>
+              </div>
+
+                <div class="row">
+                  <div class=" col col-lg-10 mb-3">
+                    <label for="pwd" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="pwd" formControlName="pwd">
+                    <div class="form-text text-danger" *ngIf="Pwd.errors?.['required'] && (Pwd.touched || Pwd.dirty)">Password is Required</div>
+                    <!-- <div class="form-text text-danger" *ngIf="Pwd.errors?.['minlength'] || Pwd.errors?.['maxlength']&& (Pwd.touched || Pwd.dirty)"></div> -->
+                  </div>
+                  </div>
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4 lg-8">
+
+              <div class="col d-flex justify-content-start">
+                <!-- Simple link -->
+                <a href="#!">Forgot password?</a>
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="row">
+              <div class="col-4 offset-3">
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-danger" style="background-color: rgb(240, 0, 0);"  [disabled]="loginForm.invalid">
+                    Sign In
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
